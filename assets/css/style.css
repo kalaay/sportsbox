@@ -1,0 +1,90 @@
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 17px;
+    text-emphasis: bolder;
+    color:#575555;
+    line-height: 1.5;
+    width: 100%;
+    height: 400px;
+    background-image: url("bg4.jpg");
+    background-size: cover;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-family: 'Monoton', cursive;
+    color: blue;
+    margin-top: 10px;
+
+}
+.main-btn {
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.section-header {
+    font-weight: 700;
+    width: 100%;
+    text-transform: capitalize;
+    font-size: 22px;
+    padding: 10px 0px 0px 0px;
+    text-align: left;
+}
+.matchup-col-header, .time-col-header, .tickets-col-header {
+    background-color: rgb(0, 139, 63);
+    color: rgb(241, 252, 244);
+    text-align: center
+}
+td {
+    vertical-align: middle;
+}
+table {
+    width:100%;
+}
+.matchup-time {
+    text-align: right;
+    margin-right: 75px;
+}
+.matchup-teams {
+    text-align:left;
+}
+
+#schedule-box {
+    background-color: rgb(7, 7, 7);
+    opacity: 50%;
+    font-family: 'Teko', sans-serif;
+    font-size: 25px;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+#search-submit{
+    background-color: rgb(54, 54, 248);
+    color: white;
+}
+
+#nvbr-id{
+    background-color: rgb(7, 7, 7);
+    width:100%; 
+}
+
+#search-input{
+    margin-left: 470px;
+}
+
+#news{
+    background-color: rgb(7, 6, 8);
+    color: white;
+}
+
+#logo-id{
+    text-align: right;
+}
+
+
