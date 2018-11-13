@@ -14,7 +14,7 @@ $(function () {
     var j;
 
     var sportURL =
-    "http://webhose.io/filterWebContent?token=d35f74d8-68f8-45cc-882b-4bb271bda119&format=json&ts=1540846661784&sort=crawled&q=text%3A" +
+    "https://webhose.io/filterWebContent?token=39264a6a-8ae4-47cf-ab33-18beb06a93ed&format=json&ts=1540846661784&sort=crawled&q=text%3A" +
       choice +
       "%20thread.country%3AUS%20site_category%3Asports%20site_type%3Anews";;
     fetch(sportURL)
@@ -65,7 +65,7 @@ $(function () {
   setTimeout(imageScreen("nba", news), 1001);
   // scoreboard=============================================================
   function scoreScreen(api, league) {
-    j = 2;
+    j = 6;
     var password = "tanakan13";
     var sportURL =
       "https://api.mysportsfeeds.com/v1.0/pull/" +
@@ -85,17 +85,17 @@ $(function () {
     }).then(function (response) {
       for (var i = 0; i < j; i++) {
         var score =
-          "<div id='block'><p class='pricing-title' id='date'>" +
+          "<div class='col-6' id='block'><div class='d-flex'><div id='date'>" +
           moment(response.scoreboard.gameScore[i].game.date).format("MMM Do") +
-          "</p><p class='pricing-rate' ><span>" +
+          "</div></div><div class='d-flex'><div>" +
           response.scoreboard.gameScore[i].game.awayTeam.Abbreviation +
-          "</span><br><span>" +
+          "</div><div>" +
           response.scoreboard.gameScore[i].awayScore +
-          "</span> VS<span>" +
-          response.scoreboard.gameScore[i].homeScore +
-          "</span><br><span>" +
+          "</div></div><div class='d-flex'><div>" +
           response.scoreboard.gameScore[i].game.homeTeam.Abbreviation +
-          "</span></p></div>";
+          "</div><div>" +
+          response.scoreboard.gameScore[i].homeScore +
+          "</div></div></div>";
 
         $("#score").append(score);
       }
@@ -233,18 +233,6 @@ $(function () {
     $("#score").addClass("hide");
     $("#searchedPages").addClass("hide");
     $("#leagueNews").removeClass("hide");
-  });
-
-  // Team Search by clicking enter
-  $('#search-input').keypress(function (e) {
-    if (e.which == '13') {
-      var teamName = $('#search-input').val().trim();
-      if (teamName != "") {
-        displayTeamMatchupInfo(teamName);
-      } else
-        alert("You have to enter a team name for searching!");
-      $('#search-input').val('');
-    }
   });
 
   // Team search by clicking submit

@@ -13,7 +13,7 @@
 
 
 .news-post-holder{
-    
+  font-family: 'Roboto', sans-serif;
 }
 
 .img-responsive {
@@ -38,6 +38,7 @@
     text-align: center;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
+   
   }
 .pricing .pricing-table .pricing-header .pricing-title {
     color: #ffffff;
@@ -65,4 +66,3 @@
     color: #bdc3c7;
     text-transform: uppercase;
   }
-/*  */
