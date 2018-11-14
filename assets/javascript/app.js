@@ -14,7 +14,7 @@ $(function () {
     var j;
 
     var sportURL =
-    "https://webhose.io/filterWebContent?token=39264a6a-8ae4-47cf-ab33-18beb06a93ed&format=json&ts=1540846661784&sort=crawled&q=text%3A" +
+      "https://webhose.io/filterWebContent?token=b6dbe9ca-5937-4ef1-9256-048e29cb7ab6&format=json&ts=1540846661784&sort=crawled&q=text%3A" +
       choice +
       "%20thread.country%3AUS%20site_category%3Asports%20site_type%3Anews";;
     fetch(sportURL)
@@ -85,17 +85,17 @@ $(function () {
     }).then(function (response) {
       for (var i = 0; i < j; i++) {
         var score =
-          "<div class='col-2' id='block'><div class='d-flex'><div id='date'>" +
-          moment(response.scoreboard.gameScore[i].game.date).format("MMM Do") +
-          "</div></div><div class='d-flex'>AWAY:&nbsp&nbsp<div>" +
-          response.scoreboard.gameScore[i].game.awayTeam.Abbreviation +
-          "</div><div>&nbsp" +
-          response.scoreboard.gameScore[i].awayScore +
-          "</div></div><div class='d-flex'>HOME:&nbsp&nbsp<div>" +
-          response.scoreboard.gameScore[i].game.homeTeam.Abbreviation +
-          "&nbsp</div><div>&nbsp&nbsp" +
-          response.scoreboard.gameScore[i].homeScore +
-          "</div></div></div>";
+         "<div class='col-2' id='block'><div class='d-flex'><div id='date'>" +
+         moment(response.scoreboard.gameScore[i].game.date).format("MMM Do") +
+         "</div></div><div class='d-flex'>AWAY:&nbsp&nbsp<div>" +
+         response.scoreboard.gameScore[i].game.awayTeam.Abbreviation +
+         "</div><div>&nbsp" +
+         response.scoreboard.gameScore[i].awayScore +
+         "</div></div><div class='d-flex'>HOME:&nbsp&nbsp<div>" +
+         response.scoreboard.gameScore[i].game.homeTeam.Abbreviation +
+         "&nbsp</div><div>&nbsp&nbsp" +
+         response.scoreboard.gameScore[i].homeScore +
+         "</div></div></div>";
 
         $("#score").append(score);
       }
@@ -104,10 +104,10 @@ $(function () {
   }
 
   // Create matchup content
-  function createMatchupContent(results) {
+  function createMatchupContent(results, searchKey) {
     $("#matchup-page").empty(); // Clear the page first before showing new data
     if (results == "") {
-      $("#matchup-page").html(searchKey + ": There is nothing returned from SeatGeek");
+      $("#matchup-page").html(searchKey + ": There is no such team found!");
     }
 
     var gameDate = "";
@@ -155,16 +155,16 @@ $(function () {
     var queryURL = "https://api.seatgeek.com/2/events?taxonomies.name=" + searchKey + "&client_id=MTM4MjYzODl8MTU0MTUyOTc1NS42Mg";
 
     $.ajax({
-      url: queryURL,
-      method: "GET",
-      error: function (err) {
-        console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
-      }
-    })
+        url: queryURL,
+        method: "GET",
+        error: function (err) {
+          console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+        }
+      })
       .done(function (response) {
         var results = response.events;
 
-        createMatchupContent(results);
+        createMatchupContent(results, searchKey);
       });
   }
 
@@ -174,16 +174,16 @@ $(function () {
     var queryURL = "https://api.seatgeek.com/2/events?performers.slug=" + searchKey + "&client_id=MTM4MjYzODl8MTU0MTUyOTc1NS42Mg";
 
     $.ajax({
-      url: queryURL,
-      method: "GET",
-      error: function (err) {
-        console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
-      }
-    })
+        url: queryURL,
+        method: "GET",
+        error: function (err) {
+          console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+        }
+      })
       .done(function (response) {
         var results = response.events;
 
-        createMatchupContent(results);
+        createMatchupContent(results, searchKey);
       });
   }
 
@@ -202,7 +202,13 @@ $(function () {
 
     $("#score").empty();
     displayLeagueMatchupInfo(league);
-    scoreScreen(leg[league], league);
+     //Oleksii MLB scoreboard fix
+     if (league == "mlb") {
+      scoreScreen(leg.nhl, "nhl");
+    } else {
+      scoreScreen(leg[league], league);
+    }
+    // End MLB scoreboard fix
     setTimeout(imageScreen(league, where), 2000);
   });
 

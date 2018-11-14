@@ -7,9 +7,6 @@
     display: none;
 }
 
-#block{
-    display: inline-block;
-}
 
 
 .news-post-holder{
@@ -20,6 +17,7 @@
     display: block;
     margin-top: 20px;
     width: 100%;
+  
   }
 
  
