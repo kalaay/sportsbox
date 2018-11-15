@@ -8,6 +8,7 @@ body {
     /* height: 400px; */
     background-image: url("bg4.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
 }
 /* NAV BAR */
 
